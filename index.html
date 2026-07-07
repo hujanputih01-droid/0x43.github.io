@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8" />
@@ -546,7 +546,8 @@
 }
 #musicMinimize:hover { color: #f0e6ff; }
 @media (max-width: 600px) {
-  #musicPlayer:not(.minimized) { width: 220px; bottom: 14px; left: 14px; }
+  #musicPlayer:not(.minimized) { width: 200px; bottom: 12px; left: 12px; padding: 10px 12px; }
+  #musicPlayer { bottom: 12px; left: 12px; }
 }
 </style>
 
@@ -678,6 +679,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1rem; width: 100%; max-width: 720px;
+  /* Beri ruang di bawah supaya foto terakhir tidak tertutup music player */
+  padding-bottom: 80px;
 }
 
 .polaroid-outer {
@@ -1893,6 +1896,10 @@ let playerReady  = false;
 function startMusic() {
   const player = document.getElementById('musicPlayer');
   player.style.display = 'block';
+  // Di HP, langsung minimized supaya tidak menutupi konten
+  if (window.innerWidth <= 600) {
+    player.classList.add('minimized');
+  }
   playerReady = true;
   loadTrack(0);
   // Autoplay — browser modern butuh interaksi dulu,
