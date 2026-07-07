@@ -1,0 +1,2009 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday Assifa 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d1a;
+    --purple: #9b59b6;
+    --purple-light: #c39bd3;
+    --pink: #e91e8c;
+    --pink-light: #f48fb1;
+    --gold: #f1c40f;
+    --gold-light: #f9e79f;
+    --white: #f0e6ff;
+    --surface: #1a1a2e;
+    --surface2: #16213e;
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* ─── INTRO OVERLAY ─── */
+  #intro {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--bg);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 2rem;
+  }
+
+  .intro-step { display: none; flex-direction: column; align-items: center; gap: 1.5rem; }
+  .intro-step.active { display: flex; }
+
+  /* Step 1 */
+  .heart-icon {
+    font-size: 4rem;
+    animation: heartbeat 0.8s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px #e91e8c);
+  }
+  @keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    14%      { transform: scale(1.3); }
+    28%      { transform: scale(1); }
+    42%      { transform: scale(1.2); }
+    70%      { transform: scale(1); }
+  }
+
+  .intro-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 5vw, 2.8rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--pink), var(--purple), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.3;
+  }
+
+  .progress-wrap {
+    width: min(480px, 90vw);
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+  }
+  .progress-bar {
+    height: 100%; width: 0%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--pink), var(--purple), var(--gold));
+    transition: width 0.1s linear;
+    box-shadow: 0 0 12px var(--pink);
+  }
+
+  .progress-label {
+    font-size: 0.85rem;
+    color: var(--purple-light);
+    letter-spacing: 0.05em;
+  }
+
+  /* Step 2 */
+  .ready-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 10vw, 6rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold), var(--pink), var(--purple));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: pulseGlow 1s ease-in-out infinite alternate;
+  }
+  @keyframes pulseGlow {
+    from { filter: drop-shadow(0 0 10px rgba(233,30,140,0.6)); }
+    to   { filter: drop-shadow(0 0 30px rgba(155,89,182,0.9)); }
+  }
+
+  .ready-sub {
+    font-size: clamp(0.95rem, 3vw, 1.25rem);
+    color: var(--gold-light);
+    opacity: 0.85;
+  }
+
+  /* Step 3 — Intro Cake */
+  #introCakeSvg {
+    width: min(280px, 80vw);
+    height: auto;
+    filter: drop-shadow(0 8px 30px rgba(233,30,140,0.3));
+  }
+  .intro-cake-label {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+  .intro-cake-hint {
+    font-size: 0.82rem;
+    color: var(--purple-light);
+    animation: blink 1.5s ease-in-out infinite;
+    margin-top: 0.5rem;
+  }
+  @keyframes blink { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+  /* Step 4 — Countdown */
+  .countdown-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(6rem, 25vw, 14rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold), var(--pink));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    animation: popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
+  }
+  @keyframes popIn {
+    from { transform: scale(0.3); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+  .countdown-ring {
+    position: absolute;
+    width: clamp(150px,40vw,260px); height: clamp(150px,40vw,260px);
+    border-radius: 50%;
+    border: 3px solid var(--purple);
+    animation: ringExpand 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  @keyframes ringExpand {
+    from { transform: scale(0.5); opacity: 0.8; }
+    to   { transform: scale(2);   opacity: 0; }
+  }
+  .countdown-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
+
+  /* ─── STARS BACKGROUND ─── */
+  #stars {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--d) ease-in-out infinite var(--delay);
+  }
+  @keyframes twinkle {
+    0%,100% { opacity: 0.2; transform: scale(1); }
+    50%      { opacity: 1;   transform: scale(1.4); }
+  }
+
+  /* ─── MAIN APP ─── */
+  #app {
+    position: fixed; inset: 0; z-index: 1;
+    display: none;
+    flex-direction: column;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: relative; z-index: 100;
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem;
+    background: rgba(13,13,26,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(155,89,182,0.25);
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    background: none; border: none; cursor: pointer;
+    color: rgba(240,230,255,0.55);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    transition: all 0.25s;
+    white-space: nowrap;
+  }
+  .nav-btn:hover { color: var(--white); background: rgba(155,89,182,0.2); }
+  .nav-btn.active {
+    color: var(--white);
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    box-shadow: 0 0 16px rgba(233,30,140,0.45);
+  }
+
+  /* ─── PAGES CONTAINER ─── */
+  #pages-wrap {
+    flex: 1; position: relative; overflow: hidden;
+  }
+
+  .page {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 1.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Default: hidden off to the right, invisible */
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.45s cubic-bezier(0.77,0,0.175,1),
+                opacity 0.45s ease,
+                visibility 0s linear 0.45s;
+  }
+  .page.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform 0.45s cubic-bezier(0.77,0,0.175,1),
+                opacity 0.45s ease,
+                visibility 0s linear 0s;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     INTRO OVERLAY
+═══════════════════════════════════════════ -->
+<div id="intro">
+  <!-- Step 1 -->
+  <div class="intro-step active" id="step1">
+    <div class="heart-icon">💜</div>
+    <div class="intro-name">Hi, Assifa Luthfia<br>Muthifadilla!</div>
+    <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="progress-label" id="progressLabel">Loading your surprise… 0%</div>
+  </div>
+  <!-- Step 2: Are U Ready? -->
+  <div class="intro-step" id="step2">
+    <div class="ready-text">Are U Ready?</div>
+    <div class="ready-sub">Bersiaplah untuk kejutan ulang tahunmu 🎉</div>
+  </div>
+
+  <!-- Step 3: Kue ulang tahun — tiup lilin dulu! -->
+  <div class="intro-step" id="step3">
+    <p class="intro-cake-label">Tiup semua lilin untuk melanjutkan ✨</p>
+    <svg id="introCakeSvg" viewBox="0 0 320 340" xmlns="http://www.w3.org/2000/svg"></svg>
+    <p class="intro-cake-hint" id="introCakeHint">👆 Tap lilin untuk mematikannya</p>
+  </div>
+
+  <!-- Step 4: Countdown 3 2 1 -->
+  <div class="intro-step" id="step4">
+    <div class="countdown-wrap" id="countdownWrap">
+      <div class="countdown-ring" id="countdownRing"></div>
+      <div class="countdown-num" id="countdownNum">3</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     STARS
+═══════════════════════════════════════════ -->
+<div id="stars"></div>
+
+<!-- ═══════════════════════════════════════════
+     MAIN APP
+═══════════════════════════════════════════ -->
+<div id="app">
+  <nav id="mainNav">
+    <button class="nav-btn active" data-page="0">🏠 Home</button>
+    <button class="nav-btn" data-page="1">📸 Memories</button>
+    <button class="nav-btn" data-page="3">🎁 Gifts</button>
+    <button class="nav-btn" data-page="4">💌 Surat</button>
+  </nav>
+  <div id="pages-wrap">
+
+    <!-- ─── PAGE 0: HOME ─── -->
+    <div class="page active" id="page-0">
+      <div id="balloons-container"></div>
+      <div class="home-rings">
+        <div class="deco-ring r1"></div>
+        <div class="deco-ring r2"></div>
+        <div class="deco-ring r3"></div>
+      </div>
+      <div class="home-hero">
+        <div class="home-title">Happy Birthday</div>
+        <div class="home-name">Assifa Luthfia<br>Muthifadilla</div>
+        <div class="home-age-badge">✨ 23 Tahun ✨</div>
+        <div class="home-date">7 Juli 2026</div>
+        <div class="home-sub">Semoga hari ini dan setiap harimu penuh kebahagiaan, cinta, dan keajaiban 🌸</div>
+        <div class="home-hint">👆 Klik balon untuk pesan kejutan!</div>
+      </div>
+    </div>
+
+    <!-- ─── PAGE 1: MEMORIES ─── -->
+    <div class="page" id="page-1">
+      <h2 class="page-title">📸 Sweet Memories</h2>
+      <p class="page-sub">Klik foto untuk membaliknya 💫</p>
+      <div class="polaroid-grid" id="polaroidGrid"></div>
+    </div>
+
+    <!-- ─── PAGE 2: CAKE ─── -->
+    <div class="page" id="page-2">
+      <h2 class="page-title">🎂 Make a Wish!</h2>
+      <p class="page-sub" id="cakeSubText">Tiup semua lilin untuk mendapatkan kejutan ✨</p>
+      <div id="cakeArea">
+        <svg id="cakeSvg" viewBox="0 0 320 340" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <div id="wishMessage" style="display:none"></div>
+    </div>
+
+    <!-- ─── PAGE 3: GIFTS ─── -->
+    <div class="page" id="page-3">
+      <h2 class="page-title">🎁 Special Gifts</h2>
+      <p class="page-sub">Klik kotak hadiah untuk membukanya! 🎀</p>
+      <div class="gifts-grid" id="giftsGrid"></div>
+    </div>
+
+    <!-- ─── PAGE 4: SURAT ─── -->
+    <div class="page" id="page-4">
+      <h2 class="page-title">Sepucuk Surat</h2>
+      <p class="page-sub">Dari seseorang yang selalu mendoakanmu dalam diam 💌</p>
+      <div class="letter-wrap" id="letterWrap">
+        <div class="letter-envelope" id="letterEnvelope">
+          <div class="envelope-svg-wrap">
+            <!-- Flap amplop pakai SVG supaya rapi -->
+            <svg viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;">
+              <polygon points="0,0 340,0 170,85" fill="#7d3c98"/>
+              <polygon points="0,0 170,85 0,100" fill="#6a2489"/>
+              <polygon points="340,0 170,85 340,100" fill="#6a2489"/>
+            </svg>
+          </div>
+          <div class="envelope-body">
+            <div class="envelope-heart">💜</div>
+            <p class="envelope-label">Untuk Assifa</p>
+            <button class="envelope-btn" id="openLetterBtn">Buka Surat 💌</button>
+          </div>
+        </div>
+        <div class="letter-paper" id="letterPaper">
+          <div class="letter-content">
+            <p class="letter-to">For Assifa Luthfia Muthifadilla,</p>
+            <p>Selamat ulang tahun yang ke-23 ya adee, Assifa. 💙</p>
+            <p>Hari ini, tepat tanggal 8 Juli, usiamu bertambah satu tahun lagi. Selamat memasuki usia 23 tahun sayang.</p>
+            <p>Semoga bertambahnya umur ini bukan hanya sekadar bertambah angka, tapi juga bertambah kebahagiaan, keberkahan, kesehatan, rezeki, ketenangan hati, dan segala hal baik yang selama ini selalu kamu perjuangkan.</p>
+            <p>Mas bersyukur, di antara miliaran manusia di dunia ini, semesta mempertemukan kita dengan cara yang sangat sederhana, bahkan mungkin terdengar lucu. Siapa sangka sebuah game yang awalnya cuma untuk mengisi waktu malah mempertemukan aku dengan seseorang sebaik kamu. Awalnya mungkin hanya pemain yang tidak sengaja bertemu, lalu saling menyapa, lalu berteman, lalu tanpa terasa menjadi tempat pulang untuk saling bercerita setiap malam.</p>
+            <p>Sampai hari ini, mas masih sering berpikir, ternyata pertemuan terbaik memang tidak pernah direncanakan.</p>
+            <p>Terima kasih ya adee, karena tanpa sadar kamu udah menjadi bagian dari hari-hariku. Terima kasih udah mempercayaiku untuk mendengarkan semua ceritamu. Tentang pekerjaanmu yang melelahkan. Tentang hari-hari yang kadang tidak berjalan sesuai harapan. Tentang tawa kecilmu. Tentang lelahmu. Tentang air matamu. Tentang semua hal yang mungkin ngga semua orang tahu.</p>
+            <p>Mas tahu kamu bekerja sangat keras.</p>
+            <p>Mas tahu ada hari-hari ketika ade pulang dengan badan yang benar-benar lelah, tapi tetap berusaha tersenyum. Aku tahu ada saat ketika kamu ingin menyerah, tetapi tetap memilih bertahan. Aku tahu menjadi kuat bukanlah pilihanmu, tetapi keadaan yang memaksamu untuk terus kuat.</p>
+            <p>Dan yang paling mas tahu...<br>Di balik senyummu yang hangat, ada hati yang sering kali menyimpan luka sendirian.</p>
+            <p>Mas juga tahu tentang hubunganmu yang selama ini berjalan tanpa arah yang jelas. Mas tahu bagaimana rasanya terus berharap kepada seseorang, tetapi yang datang justru rasa kecewa. Mas tahu bagaimana rasanya berusaha mempertahankan sesuatu yang perlahan malah menyakiti diri sendiri. Mas tahu kamu sudah berjuang sejauh itu.</p>
+            <p>Kalau boleh jujur, melihatmu disakiti berkali-kali membuatku ikut sedih. Dan menjadikan diriku sebagai tempatmu berteduh bukanlah sebuah kesalahan</p>
+            <p>Karena menurutku, seseorang sebaik kamuu tidak seharusnya terus menangisi orang yang bahkan tidak benar-benar menjaga hatimu.</p>
+            <p class="letter-highlight">Kamu pantas dicintai dengan tenang.<br>Kamu pantas diprioritaskan.<br>Kamu pantas didengarkan.<br>Kamu pantas dihargai.<br>Kamu pantas dipeluk ketika lelah.<br>Kamu pantas mendapatkan seseorang yang memilihmu setiap hari tanpa membuatmu terus bertanya-tanya tentang posisimu.</p>
+            <p>Jangan pernah merasa bahwa kamu kurang. Jangan pernah berpikir kalau semua yang terjadi adalah karena kamu tidak cukup baik.</p>
+            <p>Kadang memang bukan kita yang kurang berharga. Kadang hanya kita sedang berada di tempat yang salah, bersama orang yang belum tahu bagaimana cara menghargai seseorang sebaik kita.</p>
+            <p>Aku percaya, akan ada waktunya nanti seseorang hadir bukan untuk mengajarkan luka, tetapi mengajarkan bagaimana rasanya dicintai tanpa rasa takut.</p>
+            <p>Sampai hari itu datang, tolong tetap cintai dirimu sendiri. Jangan kehilangan senyum itu. Jangan kehilangan hati baikmu hanya karena pernah diperlakukan tidak baik. Jangan berubah menjadi dingin hanya karena dunia pernah membuatmu kecewa.</p>
+            <p class="letter-highlight">Tetaplah menjadi Assifa yang aku kenal.<br>Assifa yang hangat.<br>Assifa yang baik.<br>Assifa yang selalu peduli sama orang lain.<br>Assifa yang selalu bisa membuat suasana menjadi lebih hidup.<br>Karena percayalah, orang seperti kamu sangat langka.</p>
+            <p>Di usia 23 tahun ini, aku berharap kamu tidak lagi terlalu keras pada dirimu sendiri. Kalau capek, istirahat. Kalau sedih, menangis. Kalau kecewa, tidak apa-apa. Tidak semua hal harus kamu pendam sendirian. Kamu juga manusia. Kamu juga berhak lelah. Kamu juga berhak bahagia.</p>
+            <p>Mas mau kamu percaya kalau hidup bukan perlombaan. Tidak apa-apa kalau langkahmu lebih lambat. Tidak apa-apa kalau impianmu belum semuanya tercapai. Yang penting kamu tidak berhenti berjalan. Sebab setiap langkah kecil tetap membawa kita menuju masa depan.</p>
+            <p>Teruslah semangat menjalani hidup. Teruslah belajar. Teruslah berkembang. Teruslah menjadi versi terbaik dari dirimu sendiri.</p>
+            <p>Karena aku yakin, perempuan sekuat kamu akan sampai pada semua mimpi yang sedang kamu perjuangkan. Mungkin jalannya memang tidak mudah. Mungkin banyak air mata yang harus jatuh. Mungkin akan ada lebih banyak kegagalan daripada keberhasilan. Tetapi percayalah, tidak ada perjuangan yang benar-benar sia-sia.</p>
+            <p class="letter-highlight">Semua lelahmu sedang membangun masa depanmu.<br>Semua air matamu sedang menguatkanmu.<br>Semua doa yang kamu panjatkan sedang Allah siapkan waktu terbaik untuk dikabulkan.</p>
+            <p>Mas juga ingin berterima kasih karena selama ini adee sudah menjadi pendengar yang baik buatku. Setiap malam kita saling bertukar cerita. Saling mendengar keluh kesah. Saling menguatkan. Saling menemani meskipun hanya lewat layar.</p>
+            <p>Mungkin bagi orang lain itu biasa saja. Tetapi bagiku, itu sangat berarti. Kehadiranmu membuat hari-hariku terasa lebih berwarna. Entah kenapa, rasanya selalu ada yang berbeda setiap kali bisa ngobrol sama kamu.</p>
+            <p>Kadang kita tertawa karena hal-hal receh. Kadang mengeluh soal kehidupan. Kadang diam, tapi tetap merasa ditemani. Dan anehnya, semua itu selalu terasa cukup.</p>
+            <p>Walaupun kita dipisahkan oleh ratusan kilometer, bahkan berbeda pulau, aku tetap bersyukur pernah dipertemukan denganmu. Jarak memang memisahkan tempat kita berpijak. Tetapi jarak tidak pernah mengurangi rasa syukurku karena mengenalmu.</p>
+            <p>Terima kasih sudah hadir dalam hidupku. Terima kasih sudah menjadi teman yang luar biasa. Terima kasih sudah tetap bertahan sejauh ini.</p>
+            <p>Aku benar-benar berharap semoga suatu hari nanti kita bisa bertemu secara langsung. Bukan lagi hanya lewat suara atau layar. Semoga kita bisa duduk bersama. Mengobrol sampai lupa waktu. Tertawa tanpa perlu sinyal internet. Membuat kenangan baru yang nantinya bisa kita kenang sambil tersenyum.</p>
+            <p>Aku juga ingin meminta maaf. Maaf ya, untuk ulang tahunmu kali ini mungkin aku belum bisa memberikan hadiah yang istimewa. Maaf kalau saat ini yang bisa aku berikan hanya rangkaian kata-kata sederhana ini. Aku tahu, mungkin tulisan ini tidak sebanding dengan semua kebaikan yang sudah kamu berikan.</p>
+            <p>Tetapi percayalah, setiap kalimat di sini aku tulis dengan sangat tulus. Karena aku ingin kamu tahu kalau ada seseorang yang benar-benar mendoakan kebahagiaanmu.</p>
+            <p class="letter-doa">Doaku untukmu...<br><br>
+              Semoga Allah selalu melindungi setiap langkahmu.<br>
+              Semoga Allah menjaga kesehatanmu.<br>
+              Semoga Allah memudahkan setiap pekerjaanmu.<br>
+              Semoga Allah melancarkan rezekimu.<br>
+              Semoga Allah mengangkat semua beban yang selama ini kamu pikul diam-diam.<br>
+              Semoga Allah mengganti setiap air mata yang pernah kamu jatuhkan dengan kebahagiaan yang berkali-kali lipat lebih besar.<br>
+              Semoga Allah mempertemukanmu dengan orang-orang yang benar-benar tulus menyayangimu.<br>
+              Semoga Allah menjauhkanmu dari orang-orang yang hanya datang untuk melukai.<br>
+              Semoga Allah mengabulkan semua doa yang bahkan belum sempat kamu ceritakan kepada siapa pun.<br>
+              Semoga setiap langkahmu selalu dipenuhi keberkahan.<br>
+              Semoga semua impianmu satu per satu terwujud.<br>
+              Semoga kamu selalu diberikan hati yang lapang.<br>
+              Semoga kamu selalu diberikan alasan untuk tersenyum setiap hari.<br>
+              Dan semoga, apa pun yang terjadi nanti, kamu tidak pernah kehilangan harapan.
+            </p>
+            <p>Aku juga punya satu harapan kecil. Aku berharap semoga waktu tidak mengubah pertemanan kita. Semoga sejauh apa pun jarak memisahkan, sesibuk apa pun kehidupan nanti, dan selama apa pun waktu berlalu, kita masih bisa tetap saling menyapa. Masih bisa saling mendengarkan cerita. Masih bisa menjadi tempat pulang ketika dunia terasa terlalu berat.</p>
+            <p>Kalaupun nanti hidup membawa kita ke jalan yang berbeda, aku berharap kita tetap mengingat bahwa pernah ada satu masa di mana kita saling menemani melewati hari-hari yang tidak mudah.</p>
+            <p>Terakhir...<br>Sekali lagi, selamat ulang tahun, Assifa Luthfia Muthifadilla.</p>
+            <p>Teruslah menjadi perempuan yang kuat, tetapi jangan lupa bahwa kamu juga boleh rapuh. Teruslah menjadi perempuan yang baik, tetapi jangan sampai kebaikanmu dimanfaatkan. Teruslah menjadi perempuan yang hangat, tetapi jangan biarkan kehangatanmu diberikan kepada orang yang tidak tahu cara menghargainya.</p>
+            <p>Teruslah bermimpi setinggi langit. Teruslah percaya bahwa masa depanmu akan indah. Karena aku yakin, badai yang selama ini kamu lewati hanyalah jalan menuju pelangi yang lebih indah.</p>
+            <p class="letter-highlight">Selamat bertambah usia, perempuan hebat.<br>Semoga usia 23 menjadi awal dari babak kehidupan yang lebih bahagia, lebih damai, lebih sehat, lebih sukses, lebih dicintai, dan lebih dekat dengan semua impianmu.</p>
+            <p>Terima kasih sudah hadir di hidupku. Terima kasih sudah menjadi bagian dari cerita yang mungkin tidak akan pernah aku lupakan.</p>
+            <p>Semoga semesta selalu baik kepadamu. Semoga Allah selalu menjaga setiap langkahmu. Dan semoga, apa pun yang akan terjadi di masa depan nanti, kita masih diberi kesempatan untuk tetap menjadi teman yang saling mendoakan, saling mendukung, dan saling menguatkan.</p>
+            <p class="letter-closing">Selamat ulang tahun, Assifa.<br>Semoga bahagia selalu menemukanmu, di mana pun kamu berada.</p>
+            <p class="letter-from">• Dari seseorang yang selalu mendoakanmu dalam diam -Erick.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pages-wrap -->
+</div><!-- /app -->
+
+<!-- ─── CONFETTI CANVAS ─── -->
+<canvas id="confettiCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:999;display:none;"></canvas>
+
+<!-- ─── MUSIC PLAYER ─── -->
+<div id="musicPlayer">
+  <div id="musicAlbumArt">🎵</div>
+  <div id="musicInfo">
+    <div id="musicTitle">Happy Birthday</div>
+    <div id="musicArtist">For Assifa 💜</div>
+  </div>
+  <div id="musicControls">
+    <button id="musicPrev" class="mc-btn" title="Sebelumnya">⏮</button>
+    <button id="musicPlay" class="mc-btn mc-play" title="Play/Pause">▶</button>
+    <button id="musicNext" class="mc-btn" title="Berikutnya">⏭</button>
+  </div>
+  <div id="musicProgress">
+    <span id="musicCurrent">0:00</span>
+    <input type="range" id="musicSeek" min="0" max="100" value="0" step="0.1"/>
+    <span id="musicDuration">0:00</span>
+  </div>
+  <div id="musicVolumeRow">
+    <span style="font-size:0.8rem;">🔊</span>
+    <input type="range" id="musicVolume" min="0" max="1" step="0.05" value="0.6"/>
+  </div>
+  <button id="musicMinimize" title="Minimize">—</button>
+</div>
+
+<style>
+/* ─── MUSIC PLAYER STYLES ─── */
+#musicPlayer {
+  position: fixed;
+  bottom: 20px; left: 20px;
+  z-index: 700;
+  background: rgba(22,22,46,0.96);
+  backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(155,89,182,0.4);
+  border-radius: 18px;
+  padding: 14px 16px;
+  width: 260px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(155,89,182,0.15);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  display: none; /* shown after intro via JS */
+}
+#musicPlayer.minimized {
+  width: 52px; height: 52px;
+  padding: 0; border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+#musicPlayer.minimized #musicInfo,
+#musicPlayer.minimized #musicControls,
+#musicPlayer.minimized #musicProgress,
+#musicPlayer.minimized #musicVolumeRow,
+#musicPlayer.minimized #musicMinimize { display: none; }
+#musicPlayer.minimized #musicAlbumArt {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin: 0;
+  background: linear-gradient(135deg, #e91e8c, #9b59b6);
+  animation: spinArt 4s linear infinite;
+  cursor: pointer;
+}
+@keyframes spinArt { to { transform: rotate(360deg); } }
+
+#musicAlbumArt {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, #e91e8c, #9b59b6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 10px;
+  flex-shrink: 0;
+}
+#musicInfo {
+  margin-bottom: 10px;
+}
+#musicTitle {
+  font-size: 0.85rem; font-weight: 700;
+  color: #f0e6ff;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#musicArtist {
+  font-size: 0.72rem; color: rgba(195,155,211,0.8); margin-top: 2px;
+}
+#musicControls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: 10px;
+}
+.mc-btn {
+  background: none; border: none; cursor: pointer;
+  color: rgba(195,155,211,0.7); font-size: 1rem;
+  padding: 4px 8px; border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+}
+.mc-btn:hover { color: #f0e6ff; background: rgba(155,89,182,0.2); }
+.mc-play {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, #e91e8c, #9b59b6) !important;
+  color: white !important; font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(233,30,140,0.4);
+}
+.mc-play:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(233,30,140,0.6); }
+#musicProgress {
+  display: flex; align-items: center; gap: 6px; margin-bottom: 8px;
+}
+#musicProgress span { font-size: 0.65rem; color: rgba(195,155,211,0.7); white-space: nowrap; }
+#musicSeek, #musicVolume { accent-color: #9b59b6; cursor: pointer; }
+#musicSeek { flex: 1; }
+#musicVolumeRow {
+  display: flex; align-items: center; gap: 8px;
+}
+#musicVolumeRow input { flex: 1; accent-color: #9b59b6; }
+#musicMinimize {
+  position: absolute; top: 8px; right: 10px;
+  background: none; border: none; cursor: pointer;
+  color: rgba(195,155,211,0.5); font-size: 0.8rem;
+  padding: 2px 6px; border-radius: 4px;
+  transition: color 0.2s;
+}
+#musicMinimize:hover { color: #f0e6ff; }
+@media (max-width: 600px) {
+  #musicPlayer:not(.minimized) { width: 220px; bottom: 14px; left: 14px; }
+}
+</style>
+
+
+<style>
+/* ─── HOME PAGE ─── */
+.home-rings { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.deco-ring {
+  position: absolute; border-radius: 50%;
+  border: 2px solid;
+  animation: rotateSlow linear infinite;
+}
+.r1 { width: 420px; height: 420px; top: -100px; left: -150px;
+      border-color: rgba(155,89,182,0.2); animation-duration: 25s; }
+.r2 { width: 300px; height: 300px; bottom: -80px; right: -80px;
+      border-color: rgba(233,30,140,0.2); animation-duration: 18s; animation-direction: reverse; }
+.r3 { width: 200px; height: 200px; top: 50%; right: -60px; transform: translateY(-50%);
+      border-color: rgba(241,196,15,0.2); animation-duration: 30s; }
+@keyframes rotateSlow { to { transform: rotate(360deg); } }
+.r3 { animation: rotateSlowCenter 30s linear infinite; }
+@keyframes rotateSlowCenter {
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.home-hero {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 0.8rem; max-width: 560px;
+}
+
+.home-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.85rem, 3vw, 1.1rem);
+  font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--purple-light); opacity: 0.8;
+}
+
+.home-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 7vw, 4rem);
+  font-weight: 900; line-height: 1.15;
+  background: linear-gradient(135deg, var(--pink), var(--purple), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(233,30,140,0.4));
+}
+
+.home-age-badge {
+  background: linear-gradient(135deg, var(--gold), var(--pink));
+  color: #fff; font-weight: 700;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  padding: 0.4rem 1.4rem; border-radius: 999px;
+  box-shadow: 0 4px 20px rgba(241,196,15,0.35);
+  letter-spacing: 0.05em;
+}
+
+.home-date {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  color: var(--gold-light); opacity: 0.75;
+  letter-spacing: 0.12em; font-weight: 500;
+}
+
+.home-sub {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  color: var(--purple-light); line-height: 1.7;
+  max-width: 380px; opacity: 0.9;
+}
+
+.home-hint {
+  font-size: 0.8rem; color: var(--pink-light);
+  opacity: 0.7; animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* ─── BALLOONS ─── */
+#balloons-container {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1;
+}
+
+.balloon {
+  position: absolute;
+  cursor: pointer;
+  pointer-events: all;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  animation: floatBalloon linear infinite;
+  transform-origin: center bottom;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+  transition: transform 0.1s;
+  line-height: 1;
+}
+.balloon:hover { transform: scale(1.15) rotate(-5deg); }
+@keyframes floatBalloon {
+  0%   { transform: translateY(0px) rotate(-3deg); }
+  25%  { transform: translateY(-18px) rotate(3deg); }
+  50%  { transform: translateY(-8px) rotate(-2deg); }
+  75%  { transform: translateY(-20px) rotate(4deg); }
+  100% { transform: translateY(0px) rotate(-3deg); }
+}
+
+.balloon-pop {
+  position: absolute; pointer-events: none;
+  font-size: 1.3rem; font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--surface), var(--surface2));
+  border: 1.5px solid var(--purple);
+  color: var(--white); padding: 0.6rem 1rem;
+  border-radius: 12px; max-width: 180px;
+  text-align: center; line-height: 1.4;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  animation: popUp 0.4s cubic-bezier(0.175,0.885,0.32,1.275) forwards,
+             fadeOut 0.5s ease 2.2s forwards;
+  z-index: 50; white-space: normal;
+}
+@keyframes popUp   { from { transform: scale(0) translateY(20px); opacity:0; }
+                     to   { transform: scale(1) translateY(0);     opacity:1; } }
+@keyframes fadeOut { to   { opacity: 0; transform: translateY(-20px) scale(0.8); } }
+
+/* ─── PAGE COMMON ─── */
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  font-weight: 900; text-align: center;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 0.3rem;
+}
+.page-sub { font-size: clamp(0.8rem, 2vw, 0.95rem); color: var(--purple-light); text-align: center; margin-bottom: 1.5rem; }
+
+/* ─── MEMORIES / POLAROID ─── */
+.polaroid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem; width: 100%; max-width: 720px;
+}
+
+.polaroid-outer {
+  perspective: 800px; cursor: pointer;
+  aspect-ratio: 3/4;
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s;
+}
+.polaroid-outer.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.polaroid-outer:hover {
+  transform: translateY(-6px) scale(1.03) !important;
+  z-index: 5;
+}
+.polaroid-inner {
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+}
+.polaroid-outer.flipped .polaroid-inner { transform: rotateY(180deg); }
+
+.polaroid-face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.polaroid-front {
+  background: #fff;
+  padding: 8px 8px 30px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.5), 0 2px 6px rgba(155,89,182,0.3);
+  display: flex; flex-direction: column;
+}
+.polaroid-front img {
+  width: 100%; flex: 1;
+  object-fit: cover; border-radius: 4px;
+  display: block;
+}
+.polaroid-front .pol-label {
+  color: #333; font-size: 0.65rem;
+  text-align: center; padding-top: 4px;
+  font-family: 'Inter', sans-serif; font-weight: 500;
+}
+
+.polaroid-back {
+  background: linear-gradient(135deg, var(--surface), var(--surface2));
+  border: 1.5px solid var(--purple);
+  transform: rotateY(180deg);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem; text-align: center;
+}
+.polaroid-back .pol-caption {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  color: var(--pink-light); font-style: italic; line-height: 1.5;
+}
+</style>
+
+<style>
+/* ─── CAKE PAGE ─── */
+#cakeArea {
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+}
+#cakeSvg {
+  width: min(320px, 90vw);
+  height: auto;
+  filter: drop-shadow(0 8px 30px rgba(233,30,140,0.3));
+}
+
+#wishMessage {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 5vw, 2rem);
+  font-weight: 900; text-align: center;
+  background: linear-gradient(135deg, var(--gold), var(--pink), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: popIn 0.6s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
+  max-width: 480px; line-height: 1.4;
+  padding: 1rem; border: 1.5px solid var(--gold);
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(241,196,15,0.25);
+}
+
+.candle-hint {
+  font-size: 0.75rem; color: var(--purple-light);
+  text-align: center; margin-top: 0.5rem;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+/* ─── GIFTS PAGE ─── */
+.gifts-grid {
+  display: flex; flex-wrap: wrap;
+  gap: 1.5rem; justify-content: center;
+  max-width: 700px; width: 100%;
+}
+
+.gift-box {
+  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.8rem; padding: 1.5rem 1.2rem;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1.5px solid rgba(155,89,182,0.35);
+  transition: all 0.3s;
+  width: min(200px, 42vw);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+  position: relative; overflow: hidden;
+}
+.gift-box::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(233,30,140,0.08), rgba(155,89,182,0.08));
+  opacity: 0; transition: opacity 0.3s;
+}
+.gift-box:hover::before { opacity: 1; }
+.gift-box:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(155,89,182,0.35); }
+
+.gift-icon { font-size: 3.5rem; transition: transform 0.3s; }
+.gift-box:hover .gift-icon { transform: rotate(-10deg) scale(1.1); }
+.gift-box.opened .gift-icon { animation: giftOpen 0.5s cubic-bezier(0.175,0.885,0.32,1.275); }
+@keyframes giftOpen {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4) rotate(15deg); }
+  60%  { transform: scale(0.8) rotate(-10deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.gift-label {
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--purple-light); text-align: center;
+}
+.gift-message {
+  font-size: 0.8rem; line-height: 1.5;
+  color: var(--pink-light); text-align: center;
+  display: none; font-style: italic;
+  animation: popIn 0.4s ease forwards;
+}
+.gift-box.opened .gift-message { display: block; }
+
+/* ─── LETTER / SURAT PAGE ─── */
+.letter-wrap {
+  width: 100%; max-width: 680px;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* Envelope */
+.letter-envelope {
+  width: min(340px, 88vw);
+  cursor: pointer;
+  animation: envFloat 3s ease-in-out infinite;
+  transition: transform 0.3s;
+  filter: drop-shadow(0 12px 32px rgba(155,89,182,0.35));
+}
+.letter-envelope:hover { transform: scale(1.03); }
+@keyframes envFloat {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* Envelope wrapper pakai SVG background untuk bentuk yang rapi */
+.envelope-svg-wrap {
+  position: relative;
+  width: 100%;
+}
+.envelope-svg-wrap svg {
+  display: block; width: 100%; height: auto;
+}
+
+.envelope-body {
+  background: linear-gradient(160deg, #8e44ad, #6c2d8a);
+  border-radius: 0 0 16px 16px;
+  padding: 1.6rem 1.4rem 2rem;
+  display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 40px rgba(155,89,182,0.2);
+  border: 1px solid rgba(195,155,211,0.25); border-top: none;
+  margin-top: -2px;
+}
+.envelope-heart {
+  font-size: 2.8rem;
+  animation: heartbeat 1.2s ease-in-out infinite;
+  line-height: 1;
+}
+.envelope-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: #f9e79f; letter-spacing: 0.06em;
+}
+.envelope-btn {
+  background: linear-gradient(135deg, #e91e8c, #9b59b6);
+  border: none; border-radius: 999px;
+  color: white; font-family: 'Inter', sans-serif;
+  font-size: 0.88rem; font-weight: 600;
+  padding: 0.65rem 1.8rem; cursor: pointer;
+  transition: all 0.25s; margin-top: 0.4rem;
+  box-shadow: 0 4px 16px rgba(233,30,140,0.4);
+  letter-spacing: 0.03em;
+}
+.envelope-btn:hover { transform: scale(1.06); box-shadow: 0 6px 22px rgba(233,30,140,0.6); }
+
+/* Letter paper — putih bersih */
+.letter-paper {
+  display: none;
+  width: 100%; max-width: 660px;
+  background: #ffffff;
+  border-radius: 4px 4px 16px 16px;
+  padding: 2.5rem 2.2rem 2rem;
+  box-shadow: 0 16px 56px rgba(0,0,0,0.55), 0 0 0 1px rgba(155,89,182,0.12);
+  animation: letterUnfold 0.55s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  transform-origin: top center;
+  overflow-y: auto; max-height: calc(100dvh - 160px);
+  /* Garis-garis seperti kertas surat asli */
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    rgba(155,89,182,0.08) 27px,
+    rgba(155,89,182,0.08) 28px
+  );
+  background-size: 100% 28px;
+}
+@keyframes letterUnfold {
+  from { opacity: 0; transform: scaleY(0.2) translateY(-30px); }
+  to   { opacity: 1; transform: scaleY(1) translateY(0); }
+}
+.letter-paper.open { display: block; }
+
+.letter-content {
+  display: flex; flex-direction: column; gap: 1.1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.83rem, 2vw, 0.96rem);
+  color: #1a1a2e; line-height: 1.9;
+}
+.letter-to {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-weight: 700; color: #6c2d8a; margin-bottom: 0.3rem;
+}
+.letter-highlight {
+  background: linear-gradient(135deg, rgba(233,30,140,0.06), rgba(155,89,182,0.07));
+  border-left: 3px solid #e91e8c;
+  padding: 0.8rem 1rem; border-radius: 0 10px 10px 0;
+  color: #4a1564; font-style: italic; line-height: 2;
+}
+.letter-doa {
+  background: rgba(155,89,182,0.05);
+  border: 1px solid rgba(155,89,182,0.2);
+  border-radius: 12px; padding: 1.2rem 1.4rem;
+  color: #3d1a5c; font-style: italic; line-height: 2.1;
+}
+.letter-closing {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 3vw, 1.15rem);
+  font-weight: 700; color: #6c2d8a;
+  text-align: center; margin-top: 0.5rem;
+}
+.letter-from {
+  text-align: right;
+  color: #8e44ad; font-style: italic;
+  font-size: 0.9rem; margin-top: 0.5rem;
+  padding-right: 0.5rem; border-top: 1px solid rgba(155,89,182,0.15);
+  padding-top: 1rem;
+}
+
+/* ─── GUESTBOOK PAGE ─── */
+.guestbook-wrap {
+  width: 100%; max-width: 580px;
+  display: flex; flex-direction: column; gap: 1.5rem;
+}
+
+.guest-form {
+  display: flex; flex-direction: column; gap: 0.75rem;
+  background: var(--surface);
+  border: 1.5px solid rgba(155,89,182,0.3);
+  border-radius: 20px; padding: 1.25rem;
+}
+
+.guest-input, .guest-textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(155,89,182,0.3);
+  border-radius: 10px; padding: 0.7rem 1rem;
+  color: var(--white); font-family: 'Inter', sans-serif;
+  font-size: 0.9rem; outline: none; resize: none;
+  transition: border-color 0.2s;
+}
+.guest-input:focus, .guest-textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 10px rgba(155,89,182,0.25);
+}
+.guest-input::placeholder, .guest-textarea::placeholder { color: rgba(240,230,255,0.35); }
+
+.emoji-row {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+}
+.emoji-btn {
+  background: none; border: 2px solid rgba(155,89,182,0.25);
+  border-radius: 8px; font-size: 1.3rem;
+  cursor: pointer; padding: 0.3rem 0.5rem;
+  transition: all 0.2s;
+}
+.emoji-btn:hover, .emoji-btn.sel { border-color: var(--purple); background: rgba(155,89,182,0.2); transform: scale(1.15); }
+
+.guest-submit {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  border: none; border-radius: 10px;
+  color: #fff; font-family: 'Inter', sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+  padding: 0.75rem; cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 4px 16px rgba(233,30,140,0.35);
+}
+.guest-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(233,30,140,0.5); }
+.guest-submit:active { transform: translateY(0); }
+
+.guest-entries { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.guest-card {
+  background: var(--surface);
+  border: 1.5px solid rgba(155,89,182,0.2);
+  border-radius: 14px; padding: 1rem 1.1rem;
+  animation: popIn 0.4s ease forwards;
+}
+.guest-card-header {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;
+}
+.guest-card-emoji { font-size: 1.4rem; }
+.guest-card-name { font-weight: 600; font-size: 0.9rem; color: var(--purple-light); }
+.guest-card-time { font-size: 0.7rem; color: rgba(240,230,255,0.4); margin-left: auto; }
+.guest-card-msg { font-size: 0.85rem; color: var(--white); line-height: 1.6; opacity: 0.9; }
+</style>
+
+<script>
+/* ══════════════════════════════════════════
+   STARS BACKGROUND
+══════════════════════════════════════════ */
+(function buildStars() {
+  const c = document.getElementById('stars');
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      --d:${(Math.random()*3+1.5).toFixed(1)}s;
+      --delay:-${(Math.random()*4).toFixed(1)}s;
+      opacity:${Math.random()*0.4+0.1};
+    `;
+    c.appendChild(s);
+  }
+})();
+
+/* ══════════════════════════════════════════
+   INTRO SEQUENCE
+══════════════════════════════════════════ */
+(function runIntro() {
+  const step1 = document.getElementById('step1');
+  const step2 = document.getElementById('step2');
+  const step3 = document.getElementById('step3');
+  const step4 = document.getElementById('step4');
+  const bar   = document.getElementById('progressBar');
+  const label = document.getElementById('progressLabel');
+  const intro = document.getElementById('intro');
+  const app   = document.getElementById('app');
+
+  // Step 1: progress bar over 2500ms
+  let pct = 0;
+  const tickMs = 40;
+  const totalMs = 2500;
+  const increment = 100 / (totalMs / tickMs);
+
+  const timer1 = setInterval(() => {
+    pct = Math.min(pct + increment, 100);
+    bar.style.width = pct + '%';
+    label.textContent = `Loading your surprise… ${Math.floor(pct)}%`;
+    if (pct >= 100) {
+      clearInterval(timer1);
+      setTimeout(showStep2, 400);
+    }
+  }, tickMs);
+
+  function showStep2() {
+    step1.classList.remove('active');
+    step2.classList.add('active');
+    // "Are U Ready?" tampil 1.8 detik lalu ke kue
+    setTimeout(showStep3, 1800);
+  }
+
+  function showStep3() {
+    step2.classList.remove('active');
+    step3.classList.add('active');
+    // Bangun kue di intro
+    buildIntroCake(function onAllCandlesBlown() {
+      // Semua lilin padam — langsung ke countdown
+      setTimeout(showStep4, 500);
+    });
+  }
+
+  function showStep4() {
+    step3.classList.remove('active');
+    step4.classList.add('active');
+    launchConfettiAndFireworks();
+    runIntroCountdown(3);
+  }
+
+  function runIntroCountdown(n) {
+    const numEl  = document.getElementById('countdownNum');
+    const ringEl = document.getElementById('countdownRing');
+    numEl.textContent = n;
+    numEl.style.animation  = 'none';
+    ringEl.style.animation = 'none';
+    void numEl.offsetWidth;
+    void ringEl.offsetWidth;
+    numEl.style.animation  = 'popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275) forwards';
+    ringEl.style.animation = 'ringExpand 0.8s ease-out forwards';
+    if (n > 1) {
+      setTimeout(() => runIntroCountdown(n - 1), 850);
+    } else {
+      setTimeout(launchApp, 700);
+    }
+  }
+
+  function launchApp() {
+    intro.style.transition = 'opacity 0.5s ease';
+    intro.style.opacity = '0';
+    setTimeout(() => {
+      intro.style.display = 'none';
+      // Tampilkan app langsung di Home (page-0)
+      app.style.display = 'flex';
+      startMusic();
+    }, 500);
+  }
+})();
+
+/* ══════════════════════════════════════════
+   INTRO CAKE (step 3 di overlay)
+══════════════════════════════════════════ */
+function buildIntroCake(onAllBlown) {
+  const svg = document.getElementById('introCakeSvg');
+  let litCount = 3;
+  const blown = [false, false, false];
+
+  svg.innerHTML = `
+    <ellipse cx="160" cy="310" rx="145" ry="18" fill="#2a1a3e"/>
+    <rect x="30" y="230" width="260" height="75" rx="12" fill="#7d3c98"/>
+    <ellipse cx="160" cy="230" rx="130" ry="14" fill="#9b59b6"/>
+    <circle cx="60"  cy="270" r="6" fill="#f1c40f" opacity="0.8"/>
+    <circle cx="100" cy="258" r="5" fill="#e91e8c" opacity="0.8"/>
+    <circle cx="140" cy="272" r="6" fill="#f1c40f" opacity="0.8"/>
+    <circle cx="180" cy="256" r="5" fill="#e91e8c" opacity="0.8"/>
+    <circle cx="220" cy="270" r="6" fill="#f1c40f" opacity="0.8"/>
+    <circle cx="260" cy="258" r="5" fill="#e91e8c" opacity="0.8"/>
+    <path d="M30,230 Q50,210 70,230 Q90,210 110,230 Q130,210 150,230 Q170,210 190,230 Q210,210 230,230 Q250,210 270,230 Q280,225 290,230" stroke="#f8c8e8" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <rect x="55" y="160" width="210" height="72" rx="10" fill="#8e44ad"/>
+    <ellipse cx="160" cy="160" rx="105" ry="12" fill="#a569bd"/>
+    <circle cx="90"  cy="195" r="5" fill="#f1c40f" opacity="0.9"/>
+    <circle cx="130" cy="185" r="4" fill="#e91e8c" opacity="0.9"/>
+    <circle cx="160" cy="197" r="5" fill="#f1c40f" opacity="0.9"/>
+    <circle cx="195" cy="185" r="4" fill="#e91e8c" opacity="0.9"/>
+    <circle cx="230" cy="196" r="5" fill="#f1c40f" opacity="0.9"/>
+    <path d="M55,160 Q75,142 95,160 Q115,142 135,160 Q155,142 175,160 Q195,142 215,160 Q235,142 255,160 Q265,155 265,160" stroke="#f8c8e8" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <rect x="85" y="100" width="150" height="62" rx="10" fill="#9b59b6"/>
+    <ellipse cx="160" cy="100" rx="75" ry="10" fill="#b07cc6"/>
+    <path d="M85,100 Q100,84 115,100 Q130,84 145,100 Q160,84 175,100 Q190,84 205,100 Q215,95 235,100" stroke="#f8c8e8" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <text x="160" y="142" text-anchor="middle" font-family="Playfair Display,serif" font-size="26" font-weight="900" fill="#f1c40f" opacity="0.9">23</text>
+    <rect x="108" y="82" width="16" height="22" rx="3" fill="#e91e8c"/>
+    <rect x="152" y="78" width="16" height="26" rx="3" fill="#9b59b6"/>
+    <rect x="196" y="82" width="16" height="22" rx="3" fill="#f1c40f"/>
+    <rect x="108" y="87" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <rect x="108" y="93" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <rect x="152" y="83" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <rect x="152" y="89" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <rect x="196" y="87" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <rect x="196" y="93" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <line x1="116" y1="82" x2="116" y2="74" stroke="#888" stroke-width="2"/>
+    <line x1="160" y1="78" x2="160" y2="68" stroke="#888" stroke-width="2"/>
+    <line x1="204" y1="82" x2="204" y2="74" stroke="#888" stroke-width="2"/>
+    <g id="ic-flame0" style="cursor:pointer">
+      <ellipse cx="116" cy="68" rx="9" ry="13" fill="#f1c40f" opacity="0.95"><animate attributeName="rx" values="9;7;9" dur="0.4s" repeatCount="indefinite"/><animate attributeName="ry" values="13;16;13" dur="0.4s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="116" cy="69" rx="5" ry="8" fill="#e91e8c" opacity="0.8"><animate attributeName="ry" values="8;11;8" dur="0.4s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="116" cy="71" rx="3" ry="5" fill="#fff" opacity="0.6"/>
+    </g>
+    <g id="ic-flame1" style="cursor:pointer">
+      <ellipse cx="160" cy="62" rx="9" ry="13" fill="#f1c40f" opacity="0.95"><animate attributeName="rx" values="9;7;9" dur="0.35s" repeatCount="indefinite"/><animate attributeName="ry" values="13;16;13" dur="0.35s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="160" cy="63" rx="5" ry="8" fill="#e91e8c" opacity="0.8"><animate attributeName="ry" values="8;11;8" dur="0.35s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="160" cy="65" rx="3" ry="5" fill="#fff" opacity="0.6"/>
+    </g>
+    <g id="ic-flame2" style="cursor:pointer">
+      <ellipse cx="204" cy="68" rx="9" ry="13" fill="#f1c40f" opacity="0.95"><animate attributeName="rx" values="9;7;9" dur="0.45s" repeatCount="indefinite"/><animate attributeName="ry" values="13;16;13" dur="0.45s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="204" cy="69" rx="5" ry="8" fill="#e91e8c" opacity="0.8"><animate attributeName="ry" values="8;11;8" dur="0.45s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="204" cy="71" rx="3" ry="5" fill="#fff" opacity="0.6"/>
+    </g>
+    <g id="ic-smoke0" style="display:none;pointer-events:none"><line x1="116" y1="74" x2="113" y2="55" stroke="#aaa" stroke-width="2" opacity="0.5" stroke-dasharray="3,3"><animate attributeName="opacity" values="0.5;0" dur="1s" repeatCount="indefinite"/></line></g>
+    <g id="ic-smoke1" style="display:none;pointer-events:none"><line x1="160" y1="68" x2="157" y2="48" stroke="#aaa" stroke-width="2" opacity="0.5" stroke-dasharray="3,3"><animate attributeName="opacity" values="0.5;0" dur="1s" repeatCount="indefinite"/></line></g>
+    <g id="ic-smoke2" style="display:none;pointer-events:none"><line x1="204" y1="74" x2="201" y2="55" stroke="#aaa" stroke-width="2" opacity="0.5" stroke-dasharray="3,3"><animate attributeName="opacity" values="0.5;0" dur="1s" repeatCount="indefinite"/></line></g>
+  `;
+
+  [0,1,2].forEach(i => {
+    document.getElementById('ic-flame' + i).addEventListener('click', function() {
+      if (blown[i]) return;
+      blown[i] = true;
+      litCount--;
+      document.getElementById('ic-flame' + i).style.display = 'none';
+      const smoke = document.getElementById('ic-smoke' + i);
+      smoke.style.display = '';
+      setTimeout(() => { smoke.style.display = 'none'; }, 2000);
+      const hint = document.getElementById('introCakeHint');
+      if (litCount > 0) {
+        hint.textContent = litCount + ' lilin lagi… tiup semuanya! 🕯️';
+      } else {
+        hint.textContent = '🎉 Semua lilin padam!';
+        if (onAllBlown) onAllBlown();
+      }
+    });
+  });
+}
+
+/* ══════════════════════════════════════════
+   PAGE NAVIGATION
+══════════════════════════════════════════ */
+const pages   = document.querySelectorAll('.page');
+const navBtns = document.querySelectorAll('.nav-btn');
+let currentPage = 0;
+
+function goToPage(idx, dir) {
+  if (idx === currentPage) return;
+  const direction = dir ?? (idx > currentPage ? 1 : -1);
+  const oldPage   = pages[currentPage];
+  const newPage   = pages[idx];
+
+  // Immediately set new page starting position (off screen), no transition
+  newPage.style.transition = 'none';
+  newPage.style.transform  = direction > 0 ? 'translateX(100%)' : 'translateX(-100%)';
+  newPage.style.opacity    = '0';
+  newPage.style.visibility = 'visible';
+  newPage.style.pointerEvents = 'none';
+
+  // Force reflow so the starting position is painted
+  void newPage.offsetWidth;
+
+  // Now animate both pages simultaneously
+  const transitionVal = 'transform 0.42s cubic-bezier(0.77,0,0.175,1), opacity 0.42s ease';
+
+  // Old page slides out
+  oldPage.style.transition = transitionVal;
+  oldPage.style.transform  = direction > 0 ? 'translateX(-100%)' : 'translateX(100%)';
+  oldPage.style.opacity    = '0';
+
+  // New page slides in
+  newPage.style.transition = transitionVal;
+  newPage.style.transform  = 'translateX(0)';
+  newPage.style.opacity    = '1';
+
+  // After transition: reset styles to clean state via classes
+  setTimeout(() => {
+    // Reset old page — hidden off right (default)
+    oldPage.style.transition    = 'none';
+    oldPage.style.transform     = 'translateX(100%)';
+    oldPage.style.opacity       = '0';
+    oldPage.style.visibility    = 'hidden';
+    oldPage.style.pointerEvents = 'none';
+    oldPage.classList.remove('active');
+
+    // Clean up new page inline styles — let CSS class take over
+    newPage.style.transition    = '';
+    newPage.style.transform     = '';
+    newPage.style.opacity       = '';
+    newPage.style.visibility    = '';
+    newPage.style.pointerEvents = '';
+    newPage.classList.add('active');
+  }, 440);
+
+  // Sync nav: match by data-page value, not array index
+  navBtns.forEach(b => b.classList.toggle('active', parseInt(b.dataset.page) === idx));
+  currentPage = idx;
+}
+
+navBtns.forEach(btn => {
+  btn.addEventListener('click', () => goToPage(parseInt(btn.dataset.page)));
+});
+
+/* ── Swipe support ── */
+let touchStartX = 0, touchStartY = 0;
+document.getElementById('pages-wrap').addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+document.getElementById('pages-wrap').addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+    // page-2 (Cake) dilewati karena sudah dipakai di intro flow
+    const navOrder = [0, 1, 3, 4];
+    const curPos = navOrder.indexOf(currentPage);
+    if (dx < 0 && curPos < navOrder.length - 1) goToPage(navOrder[curPos + 1], 1);
+    if (dx > 0 && curPos > 0) goToPage(navOrder[curPos - 1], -1);
+  }
+}, { passive: true });</script>
+
+<script>
+/* ══════════════════════════════════════════
+   HOME – BALLOONS
+══════════════════════════════════════════ */
+(function buildBalloons() {
+  const container = document.getElementById('balloons-container');
+  const emojis    = ['🎈','🎈','🎀','🎊','🎈','🎉','🎈','🎀'];
+  const messages  = [
+    '🌸 You are incredible!',
+    '💜 Selamat ulang tahun!',
+    '✨ Stay magical always',
+    '🎂 23 looks good on you!',
+    '🌟 You deserve the world',
+    '💖 Keep shining bright!',
+    '🦋 Dream big, Assifa!',
+    '🎁 This is your day!'
+  ];
+  const colors = ['#e91e8c','#9b59b6','#f1c40f','#3498db','#e74c3c','#1abc9c','#e91e8c','#9b59b6'];
+
+  emojis.forEach((em, i) => {
+    const b = document.createElement('div');
+    b.className = 'balloon';
+    b.textContent = em;
+    b.style.cssText = `
+      left: ${8 + (i * 11) % 84}%;
+      top:  ${10 + (i * 13) % 70}%;
+      animation-duration: ${3 + (i * 0.7) % 3}s;
+      animation-delay: -${(i * 0.9).toFixed(1)}s;
+      filter: drop-shadow(0 4px 8px ${colors[i]}88);
+    `;
+
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      b.style.display = 'none';
+
+      const msg = document.createElement('div');
+      msg.className = 'balloon-pop';
+      msg.textContent = messages[i];
+      msg.style.cssText = `left:${b.offsetLeft}px; top:${b.offsetTop}px;`;
+      container.appendChild(msg);
+
+      // Particle burst
+      for (let p = 0; p < 8; p++) {
+        const dot = document.createElement('div');
+        const angle = (p / 8) * 360;
+        const dist  = 50 + Math.random() * 40;
+        dot.style.cssText = `
+          position:absolute; width:8px; height:8px;
+          border-radius:50%; background:${colors[i]};
+          left:${b.offsetLeft + 20}px; top:${b.offsetTop + 20}px;
+          pointer-events:none; z-index:50;
+          animation: particleFly 0.6s ease-out forwards;
+          --tx:${Math.cos(angle*Math.PI/180)*dist}px;
+          --ty:${Math.sin(angle*Math.PI/180)*dist}px;
+        `;
+        container.appendChild(dot);
+        setTimeout(() => dot.remove(), 700);
+      }
+
+      setTimeout(() => { msg.remove(); }, 2800);
+    });
+
+    container.appendChild(b);
+  });
+})();
+</script>
+<style>
+@keyframes particleFly {
+  from { transform: translate(0,0) scale(1); opacity:1; }
+  to   { transform: translate(var(--tx),var(--ty)) scale(0); opacity:0; }
+}
+</style>
+
+<script>
+/* ══════════════════════════════════════════
+   MEMORIES – POLAROID GALLERY
+══════════════════════════════════════════ */
+(function buildPolaroids() {
+  const grid = document.getElementById('polaroidGrid');
+  const photos = [
+ { img: 'photo_2026-06-24_13-35-13.jpg', label: '24 Juni 2026', caption: 'Momen yang selalu membuatku tersenyum' },
+ { img: 'photo_2026-07-01_08-21-39.jpg', label: '1 Juli 2026', caption: 'Pagi yang indah seperti kehadiranmu' },
+ { img: 'photo_2026-07-01_08-21-42.jpg', label: '1 Juli 2026', caption: 'Setiap foto menyimpan seribu kata' },
+ { img: 'photo_2026-07-01_08-21-45.jpg', label: '1 Juli 2026', caption: 'Kenangan yang selalu aku simpan' },
+ { img: 'photo_2026-07-01_13-49-49.jpg', label: '1 Juli 2026', caption: 'Senyummu adalah hal yang paling aku sukai' },
+ { img: 'photo_2026-07-06_15-56-18.jpg', label: '6 Juli 2026', caption: 'Tepat sebelum ulang tahunmu' },
+ { img: 'photo_2026-07-07_20-05-59.jpg', label: '7 Juli 2026', caption: 'Hari ulang tahunmu - hari paling spesial' },
+ { img: 'photo_2026-07-07_20-06-10.jpg', label: '7 Juli 2026', caption: 'Selamat ulang tahun ke-23 Assifa!' },
+ ]
+
+  photos.forEach((p, i) => {
+    const outer = document.createElement('div');
+    outer.className = 'polaroid-outer';
+    outer.innerHTML = `
+      <div class="polaroid-inner">
+        <div class="polaroid-face polaroid-front">
+          <img src="${p.img}" alt="${p.label}" loading="lazy" />
+          <div class="pol-label">${p.label}</div>
+        </div>
+        <div class="polaroid-face polaroid-back">
+          <div class="pol-caption">${p.caption}</div>
+        </div>
+      </div>`;
+    outer.addEventListener('click', () => outer.classList.toggle('flipped'));
+    // Stagger reveal saat element masuk DOM
+    setTimeout(() => outer.classList.add('revealed'), 80 + i * 90);
+    grid.appendChild(outer);
+  });
+
+  // Re-trigger stagger setiap kali page memories menjadi aktif
+  const page1 = document.getElementById('page-1');
+  const observer = new MutationObserver(() => {
+    if (page1.classList.contains('active')) {
+      const cards = grid.querySelectorAll('.polaroid-outer');
+      cards.forEach((c, i) => {
+        c.classList.remove('revealed');
+        setTimeout(() => c.classList.add('revealed'), 60 + i * 80);
+      });
+    }
+  });
+  observer.observe(page1, { attributes: true, attributeFilter: ['class'] });
+})();
+</script>
+
+<script>
+/* ══════════════════════════════════════════
+   CAKE PAGE – SVG CAKE + CANDLES
+══════════════════════════════════════════ */
+(function buildCake() {
+  const svg = document.getElementById('cakeSvg');
+  let litCount = 3;
+  const candleStates = [true, true, true]; // true = lit
+
+  const cakeSVGContent = `
+    <!-- Plate -->
+    <ellipse cx="160" cy="310" rx="145" ry="18" fill="#2a1a3e" />
+
+    <!-- Bottom tier -->
+    <rect x="30"  y="230" width="260" height="75" rx="12" fill="#7d3c98"/>
+    <ellipse cx="160" cy="230" rx="130" ry="14" fill="#9b59b6"/>
+    <!-- Bottom deco dots -->
+    <circle cx="60"  cy="270" r="6" fill="#f1c40f" opacity="0.8"/>
+    <circle cx="100" cy="258" r="5" fill="#e91e8c" opacity="0.8"/>
+    <circle cx="140" cy="272" r="6" fill="#f1c40f" opacity="0.8"/>
+    <circle cx="180" cy="256" r="5" fill="#e91e8c" opacity="0.8"/>
+    <circle cx="220" cy="270" r="6" fill="#f1c40f" opacity="0.8"/>
+    <circle cx="260" cy="258" r="5" fill="#e91e8c" opacity="0.8"/>
+
+    <!-- Frosting bottom -->
+    <path d="M30,230 Q50,210 70,230 Q90,210 110,230 Q130,210 150,230 Q170,210 190,230 Q210,210 230,230 Q250,210 270,230 Q280,225 290,230" stroke="#f8c8e8" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+    <!-- Middle tier -->
+    <rect x="55"  y="160" width="210" height="72" rx="10" fill="#8e44ad"/>
+    <ellipse cx="160" cy="160" rx="105" ry="12" fill="#a569bd"/>
+    <!-- Middle deco -->
+    <circle cx="90"  cy="195" r="5" fill="#f1c40f" opacity="0.9"/>
+    <circle cx="130" cy="185" r="4" fill="#e91e8c" opacity="0.9"/>
+    <circle cx="160" cy="197" r="5" fill="#f1c40f" opacity="0.9"/>
+    <circle cx="195" cy="185" r="4" fill="#e91e8c" opacity="0.9"/>
+    <circle cx="230" cy="196" r="5" fill="#f1c40f" opacity="0.9"/>
+
+    <!-- Frosting middle -->
+    <path d="M55,160 Q75,142 95,160 Q115,142 135,160 Q155,142 175,160 Q195,142 215,160 Q235,142 255,160 Q265,155 265,160" stroke="#f8c8e8" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+    <!-- Top tier -->
+    <rect x="85"  y="100" width="150" height="62" rx="10" fill="#9b59b6"/>
+    <ellipse cx="160" cy="100" rx="75" ry="10" fill="#b07cc6"/>
+
+    <!-- Frosting top -->
+    <path d="M85,100 Q100,84 115,100 Q130,84 145,100 Q160,84 175,100 Q190,84 205,100 Q215,95 235,100" stroke="#f8c8e8" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+    <!-- "23" text on cake -->
+    <text x="160" y="142" text-anchor="middle" font-family="Playfair Display, serif" font-size="26" font-weight="900" fill="#f1c40f" opacity="0.9">23</text>
+
+    <!-- Candle holders -->
+    <rect id="ch0" x="108" y="82" width="16" height="22" rx="3" fill="#e91e8c"/>
+    <rect id="ch1" x="152" y="78" width="16" height="26" rx="3" fill="#9b59b6"/>
+    <rect id="ch2" x="196" y="82" width="16" height="22" rx="3" fill="#f1c40f"/>
+
+    <!-- Candle stripes -->
+    <rect x="108" y="87" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <rect x="108" y="93" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <rect x="152" y="83" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <rect x="152" y="89" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <rect x="196" y="87" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+    <rect x="196" y="93" width="16" height="3" rx="1" fill="rgba(255,255,255,0.3)"/>
+
+    <!-- Wicks -->
+    <line x1="116" y1="82" x2="116" y2="74" stroke="#888" stroke-width="2"/>
+    <line x1="160" y1="78" x2="160" y2="68" stroke="#888" stroke-width="2"/>
+    <line x1="204" y1="82" x2="204" y2="74" stroke="#888" stroke-width="2"/>
+
+    <!-- Flames (clickable areas) -->
+    <g id="flame0" style="cursor:pointer" data-candle="0">
+      <ellipse cx="116" cy="68" rx="9" ry="13" fill="#f1c40f" opacity="0.95">
+        <animate attributeName="rx" values="9;7;9" dur="0.4s" repeatCount="indefinite"/>
+        <animate attributeName="ry" values="13;16;13" dur="0.4s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="116" cy="69" rx="5" ry="8"  fill="#e91e8c" opacity="0.8">
+        <animate attributeName="ry" values="8;11;8" dur="0.4s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="116" cy="71" rx="3" ry="5"  fill="#fff" opacity="0.6"/>
+    </g>
+    <g id="flame1" style="cursor:pointer" data-candle="1">
+      <ellipse cx="160" cy="62" rx="9" ry="13" fill="#f1c40f" opacity="0.95">
+        <animate attributeName="rx" values="9;7;9" dur="0.35s" repeatCount="indefinite"/>
+        <animate attributeName="ry" values="13;16;13" dur="0.35s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="160" cy="63" rx="5" ry="8"  fill="#e91e8c" opacity="0.8">
+        <animate attributeName="ry" values="8;11;8" dur="0.35s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="160" cy="65" rx="3" ry="5"  fill="#fff" opacity="0.6"/>
+    </g>
+    <g id="flame2" style="cursor:pointer" data-candle="2">
+      <ellipse cx="204" cy="68" rx="9" ry="13" fill="#f1c40f" opacity="0.95">
+        <animate attributeName="rx" values="9;7;9" dur="0.45s" repeatCount="indefinite"/>
+        <animate attributeName="ry" values="13;16;13" dur="0.45s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="204" cy="69" rx="5" ry="8"  fill="#e91e8c" opacity="0.8">
+        <animate attributeName="ry" values="8;11;8" dur="0.45s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="204" cy="71" rx="3" ry="5"  fill="#fff" opacity="0.6"/>
+    </g>
+
+    <!-- Smoke (hidden until candle blown) -->
+    <g id="smoke0" style="display:none;pointer-events:none">
+      <line x1="116" y1="74" x2="113" y2="55" stroke="#aaa" stroke-width="2" opacity="0.5" stroke-dasharray="3,3">
+        <animate attributeName="opacity" values="0.5;0" dur="1s" repeatCount="indefinite"/>
+      </line>
+    </g>
+    <g id="smoke1" style="display:none;pointer-events:none">
+      <line x1="160" y1="68" x2="157" y2="48" stroke="#aaa" stroke-width="2" opacity="0.5" stroke-dasharray="3,3">
+        <animate attributeName="opacity" values="0.5;0" dur="1s" repeatCount="indefinite"/>
+      </line>
+    </g>
+    <g id="smoke2" style="display:none;pointer-events:none">
+      <line x1="204" y1="74" x2="201" y2="55" stroke="#aaa" stroke-width="2" opacity="0.5" stroke-dasharray="3,3">
+        <animate attributeName="opacity" values="0.5;0" dur="1s" repeatCount="indefinite"/>
+      </line>
+    </g>
+  `;
+
+  svg.innerHTML = cakeSVGContent;
+
+  // Candle click handlers
+  [0, 1, 2].forEach(i => {
+    const flameEl = document.getElementById('flame' + i);
+    const smokeEl = document.getElementById('smoke' + i);
+    flameEl.addEventListener('click', () => {
+      if (!candleStates[i]) return;
+      candleStates[i] = false;
+      litCount--;
+      // Hide flame, show smoke
+      flameEl.style.display = 'none';
+      smokeEl.style.display = '';
+      setTimeout(() => { smokeEl.style.display = 'none'; }, 2000);
+      // Update hint
+      document.getElementById('cakeSubText').textContent =
+        litCount > 0
+          ? `${litCount} lilin lagi… tiup semuanya! 🕯️`
+          : '';
+      if (litCount === 0) {
+        setTimeout(celebrateCake, 400);
+      }
+    });
+  });
+
+  function celebrateCake() {
+    const wish = document.getElementById('wishMessage');
+    wish.innerHTML = '🎉 Selamat Ulang Tahun ke-23!<br><span style="font-size:1rem;font-family:Inter,sans-serif;background:none;-webkit-text-fill-color:#f9e79f;color:#f9e79f;font-weight:400;">Semoga semua impianmu terwujud, Assifa 💜</span>';
+    wish.style.display = 'block';
+    launchConfettiAndFireworks();
+  }
+})();
+</script>
+
+<script>
+/* ══════════════════════════════════════════
+   CONFETTI + FIREWORKS
+══════════════════════════════════════════ */
+function launchConfettiAndFireworks() {
+  const canvas = document.getElementById('confettiCanvas');
+  canvas.style.display = 'block';
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const colors = ['#e91e8c','#9b59b6','#f1c40f','#3498db','#e74c3c','#1abc9c','#fff'];
+  const particles = [];
+
+  // Confetti pieces
+  for (let i = 0; i < 180; i++) {
+    particles.push({
+      type: 'confetti',
+      x: Math.random() * canvas.width,
+      y: -20 - Math.random() * canvas.height * 0.5,
+      w: 8 + Math.random() * 8,
+      h: 4 + Math.random() * 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random() - 0.5) * 4,
+      vy: 2 + Math.random() * 4,
+      rot: Math.random() * 360,
+      rotV: (Math.random() - 0.5) * 8,
+      life: 1
+    });
+  }
+
+  // Firework bursts
+  function addFirework(x, y, color) {
+    for (let i = 0; i < 30; i++) {
+      const angle = (i / 30) * Math.PI * 2;
+      const speed = 3 + Math.random() * 5;
+      particles.push({
+        type: 'spark',
+        x, y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        color,
+        life: 1,
+        size: 3 + Math.random() * 3
+      });
+    }
+  }
+
+  // Fire several bursts
+  const fwColors = ['#f1c40f','#e91e8c','#9b59b6','#3498db','#1abc9c'];
+  for (let b = 0; b < 6; b++) {
+    setTimeout(() => {
+      addFirework(
+        canvas.width * (0.15 + Math.random() * 0.7),
+        canvas.height * (0.1 + Math.random() * 0.5),
+        fwColors[b % fwColors.length]
+      );
+    }, b * 350);
+  }
+
+  let frame = 0;
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      if (p.type === 'confetti') {
+        p.x  += p.vx;
+        p.y  += p.vy;
+        p.rot += p.rotV;
+        p.vy  += 0.06;
+        if (p.y > canvas.height + 30) { particles.splice(i, 1); continue; }
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = 0.9;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+        alive = true;
+      } else if (p.type === 'spark') {
+        p.x  += p.vx;
+        p.y  += p.vy;
+        p.vy += 0.12;
+        p.life -= 0.018;
+        if (p.life <= 0) { particles.splice(i, 1); continue; }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.life;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        alive = true;
+      }
+    }
+
+    frame++;
+    if (frame > 300 && !alive) {
+      canvas.style.display = 'none';
+      return;
+    }
+    if (frame < 400) requestAnimationFrame(animate);
+    else canvas.style.display = 'none';
+  }
+  requestAnimationFrame(animate);
+}
+</script>
+
+<script>
+/* ══════════════════════════════════════════
+   GIFTS PAGE
+══════════════════════════════════════════ */
+(function buildGifts() {
+  const grid = document.getElementById('giftsGrid');
+  const gifts = [
+    {
+      icon: '🎁',
+      label: 'Gift of Love',
+      color: '#e91e8c',
+      message: '💜 Cintailah dirimu sendiri setiap hari. Kamu luar biasa dan layak mendapatkan semua hal indah di dunia ini!'
+    },
+    {
+      icon: '🎀',
+      label: 'Gift of Dreams',
+      color: '#9b59b6',
+      message: '✨ Semua impianmu sedang menunggumu. Terus melangkah, karena langkah terkecil pun membawa perubahan besar!'
+    },
+    {
+      icon: '🏆',
+      label: 'Gift of Success',
+      color: '#f1c40f',
+      message: '🌟 Di usia 23 ini, semoga setiap usahamu berbuah manis. Kesuksesanmu sudah di depan mata — teruslah berjuang!'
+    },
+  ];
+
+  gifts.forEach(g => {
+    const box = document.createElement('div');
+    box.className = 'gift-box';
+    box.style.borderColor = g.color + '55';
+    box.innerHTML = `
+      <div class="gift-icon">${g.icon}</div>
+      <div class="gift-label">${g.label}</div>
+      <div class="gift-message">${g.message}</div>
+    `;
+    box.addEventListener('click', () => {
+      if (!box.classList.contains('opened')) {
+        box.classList.add('opened');
+        box.style.borderColor = g.color;
+        box.style.boxShadow = `0 8px 30px ${g.color}55`;
+        // Mini confetti burst
+        miniConfetti(box);
+      }
+    });
+    grid.appendChild(box);
+  });
+
+  function miniConfetti(el) {
+    const rect = el.getBoundingClientRect();
+    const cx   = rect.left + rect.width / 2;
+    const cy   = rect.top;
+    const colors = ['#e91e8c','#9b59b6','#f1c40f','#fff'];
+    for (let i = 0; i < 18; i++) {
+      const dot = document.createElement('div');
+      const angle = (i / 18) * 360;
+      const dist  = 40 + Math.random() * 60;
+      dot.style.cssText = `
+        position:fixed; z-index:9998;
+        width:${5+Math.random()*5}px; height:${5+Math.random()*5}px;
+        border-radius:${Math.random()>0.5?'50%':'2px'};
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        left:${cx}px; top:${cy}px; pointer-events:none;
+        animation: miniPop 0.7s ease-out forwards;
+        --tx:${Math.cos(angle*Math.PI/180)*dist}px;
+        --ty:${Math.sin(angle*Math.PI/180)*dist - 60}px;
+      `;
+      document.body.appendChild(dot);
+      setTimeout(() => dot.remove(), 750);
+    }
+  }
+})();
+</script>
+<style>
+@keyframes miniPop {
+  from { transform: translate(0,0) scale(1); opacity:1; }
+  to   { transform: translate(var(--tx),var(--ty)) scale(0.2); opacity:0; }
+}
+</style>
+
+<script>
+/* ══════════════════════════════════════════
+   SURAT — buka amplop & tampilkan surat
+══════════════════════════════════════════ */
+(function initLetter() {
+  const btn       = document.getElementById('openLetterBtn');
+  const envelope  = document.getElementById('letterEnvelope');
+  const paper     = document.getElementById('letterPaper');
+
+  if (!btn) return;
+
+  btn.addEventListener('click', function() {
+    // Animasi amplop menghilang lalu surat muncul
+    envelope.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    envelope.style.opacity    = '0';
+    envelope.style.transform  = 'scale(0.85) translateY(-20px)';
+    setTimeout(() => {
+      envelope.style.display = 'none';
+      paper.classList.add('open');
+      // Scroll page-4 ke atas supaya surat terbaca dari awal
+      const page4 = document.getElementById('page-4');
+      if (page4) page4.scrollTop = 0;
+      paper.scrollTop = 0;
+    }, 400);
+  });
+})();
+</script>
+
+<style>
+/* ─── RESPONSIVE / MOBILE ─── */
+@media (max-width: 600px) {
+  nav { gap: 0.15rem; padding: 0.5rem 0.4rem; }
+  .nav-btn { font-size: 0.65rem; padding: 0.4rem 0.55rem; }
+
+  .polaroid-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+
+  .gifts-grid { gap: 1rem; }
+  .gift-box { width: min(160px, 44vw); padding: 1.1rem 0.9rem; }
+
+  .letter-wrap { width: 100%; }
+  .letter-paper { padding: 1.5rem 1.1rem; }
+
+  .home-hero { gap: 0.6rem; }
+
+  #cakeSvg { width: min(280px, 95vw); }
+}
+
+@media (max-width: 380px) {
+  .nav-btn { font-size: 0.58rem; padding: 0.35rem 0.4rem; letter-spacing: 0.02em; }
+  .polaroid-grid { gap: 0.5rem; }
+}
+
+/* ─── SCROLLBAR STYLE ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(155,89,182,0.4); border-radius: 2px; }
+
+/* ─── CAKE COUNTDOWN OVERLAY ─── */
+#cakeCountdownOverlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 8000;
+  background: rgba(13,13,26,0.92);
+  backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+  flex-direction: column;
+}
+#cakeCountdownOverlay.show {
+  display: flex;
+}
+#cakeCountdownWrap {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ─── TRANSITIONS on page ─── */
+.page { will-change: transform; }
+
+/* ─── FLOATING PARTICLES on Home ─── */
+.float-particle {
+  position: absolute; pointer-events: none;
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+  opacity: 0;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(1); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-120px) scale(0.4); opacity: 0; }
+}
+</style>
+
+<script>
+/* ── Ambient floating particles on Home page ── */
+(function addParticles() {
+  const page = document.getElementById('page-0');
+  const colors = ['#e91e8c','#9b59b6','#f1c40f'];
+  for (let i = 0; i < 15; i++) {
+    const p = document.createElement('div');
+    p.className = 'float-particle';
+    const size = 4 + Math.random() * 8;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      left:${Math.random()*100}%;
+      bottom:${Math.random()*40}%;
+      animation-duration:${4+Math.random()*5}s;
+      animation-delay:${Math.random()*6}s;
+    `;
+    page.appendChild(p);
+  }
+})();
+</script>
+
+<script>
+/* ══════════════════════════════════════════
+   MUSIC PLAYER
+   Daftar lagu: tambah URL mp3/ogg di PLAYLIST.
+   Bisa pakai link Google Drive, Dropbox, dll
+   asalkan direct download link (bukan halaman web).
+══════════════════════════════════════════ */
+const PLAYLIST = [
+  {
+    title: 'Happy Birthday',
+    artist: 'Untuk Assifa 💜',
+    // Ganti src ini dengan URL lagu MP3 kamu
+    src: 'barasuara.mp3'
+  },
+  // Tambah lagu lain di sini:
+  // { title: 'Nama Lagu', artist: 'Artis', src: 'URL_MP3' },
+];
+
+let audio        = new Audio();
+let trackIdx     = 0;
+let isPlaying    = false;
+let isSeeking    = false;
+let playerReady  = false;
+
+function startMusic() {
+  const player = document.getElementById('musicPlayer');
+  player.style.display = 'block';
+  playerReady = true;
+  loadTrack(0);
+  // Autoplay — browser modern butuh interaksi dulu,
+  // jadi kita coba play dan kalau gagal tampilkan hint
+  audio.play().then(() => {
+    setPlayIcon(true);
+    isPlaying = true;
+  }).catch(() => {
+    // Autoplay diblokir browser — tunggu klik pertama user
+    setPlayIcon(false);
+    document.addEventListener('click', function resumeOnClick() {
+      if (!isPlaying) {
+        audio.play().then(() => { setPlayIcon(true); isPlaying = true; });
+      }
+      document.removeEventListener('click', resumeOnClick);
+    });
+  });
+}
+
+function loadTrack(idx) {
+  const t = PLAYLIST[idx];
+  audio.src = t.src;
+  audio.volume = parseFloat(document.getElementById('musicVolume').value);
+  document.getElementById('musicTitle').textContent  = t.title;
+  document.getElementById('musicArtist').textContent = t.artist;
+  document.getElementById('musicSeek').value         = 0;
+  document.getElementById('musicCurrent').textContent = '0:00';
+  document.getElementById('musicDuration').textContent = '0:00';
+}
+
+function setPlayIcon(playing) {
+  document.getElementById('musicPlay').textContent = playing ? '⏸' : '▶';
+}
+
+function fmtTime(s) {
+  if (!s || isNaN(s)) return '0:00';
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${sec.toString().padStart(2,'0')}`;
+}
+
+// Audio events
+audio.addEventListener('timeupdate', () => {
+  if (isSeeking) return;
+  const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+  document.getElementById('musicSeek').value = pct;
+  document.getElementById('musicCurrent').textContent = fmtTime(audio.currentTime);
+});
+audio.addEventListener('loadedmetadata', () => {
+  document.getElementById('musicDuration').textContent = fmtTime(audio.duration);
+});
+audio.addEventListener('ended', () => {
+  // next track or loop
+  trackIdx = (trackIdx + 1) % PLAYLIST.length;
+  loadTrack(trackIdx);
+  audio.play().then(() => { setPlayIcon(true); isPlaying = true; });
+});
+
+// Controls
+document.getElementById('musicPlay').addEventListener('click', () => {
+  if (!playerReady) return;
+  if (isPlaying) {
+    audio.pause();
+    setPlayIcon(false);
+    isPlaying = false;
+  } else {
+    audio.play().then(() => { setPlayIcon(true); isPlaying = true; });
+  }
+});
+document.getElementById('musicPrev').addEventListener('click', () => {
+  trackIdx = (trackIdx - 1 + PLAYLIST.length) % PLAYLIST.length;
+  loadTrack(trackIdx);
+  if (isPlaying) audio.play();
+});
+document.getElementById('musicNext').addEventListener('click', () => {
+  trackIdx = (trackIdx + 1) % PLAYLIST.length;
+  loadTrack(trackIdx);
+  if (isPlaying) audio.play();
+});
+
+// Seek bar
+const seekBar = document.getElementById('musicSeek');
+seekBar.addEventListener('mousedown',  () => { isSeeking = true; });
+seekBar.addEventListener('touchstart', () => { isSeeking = true; }, { passive: true });
+seekBar.addEventListener('input', () => {
+  if (audio.duration) {
+    document.getElementById('musicCurrent').textContent = fmtTime(audio.duration * seekBar.value / 100);
+  }
+});
+seekBar.addEventListener('change', () => {
+  if (audio.duration) audio.currentTime = audio.duration * seekBar.value / 100;
+  isSeeking = false;
+});
+
+// Volume
+document.getElementById('musicVolume').addEventListener('input', e => {
+  audio.volume = parseFloat(e.target.value);
+});
+
+// Minimize / restore
+const playerEl = document.getElementById('musicPlayer');
+document.getElementById('musicMinimize').addEventListener('click', () => {
+  playerEl.classList.add('minimized');
+});
+playerEl.addEventListener('click', e => {
+  if (playerEl.classList.contains('minimized')) {
+    playerEl.classList.remove('minimized');
+    e.stopPropagation();
+  }
+});
+</script>
+
+</body>
+</html>
