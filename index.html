@@ -219,8 +219,8 @@
   .page {
     position: absolute; inset: 0;
     display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 1.5rem;
+    align-items: center; justify-content: flex-start;
+    padding: 1.5rem 1.5rem 100px;
     overflow-y: auto;
     overflow-x: hidden;
     /* Default: hidden off to the right, invisible */
@@ -1789,7 +1789,17 @@ function launchConfettiAndFireworks() {
   nav { gap: 0.15rem; padding: 0.5rem 0.4rem; }
   .nav-btn { font-size: 0.65rem; padding: 0.4rem 0.55rem; }
 
-  .polaroid-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  /* Memories: 2 kolom, ukuran foto menyesuaikan lebar layar, cukup padding bawah */
+  .polaroid-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    padding-bottom: 100px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Page memories scroll dari atas, bukan center */
+  #page-1 { padding: 1rem 0.75rem 0; }
 
   .gifts-grid { gap: 1rem; }
   .gift-box { width: min(160px, 44vw); padding: 1.1rem 0.9rem; }
@@ -1830,6 +1840,12 @@ function launchConfettiAndFireworks() {
 }
 
 /* ─── TRANSITIONS on page ─── */
+/* Halaman yang kontennya pendek tetap di-center secara vertikal */
+#page-0, #page-2, #page-3 { justify-content: center; }
+
+/* Halaman memories & surat — konten panjang, butuh scroll dari atas */
+#page-1, #page-4 { justify-content: flex-start; padding-top: 2rem; }
+
 .page { will-change: transform; }
 
 /* ─── FLOATING PARTICLES on Home ─── */
